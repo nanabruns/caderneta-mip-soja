@@ -8,7 +8,11 @@ const app = express();
 const PORT = 3000;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: '*', // Permite que qualquer site (incluindo o seu do github.io) faça pedidos.
+  methods: ['GET', 'POST', 'OPTIONS'], // Permite os métodos que precisamos.
+  allowedHeaders: ['Content-Type', 'Authorization'] // Permite os cabeçalhos que enviamos.
+}));
 app.use(bodyParser.json());
 
 // Pegando a chave da API do ambiente
